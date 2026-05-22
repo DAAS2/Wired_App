@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
 
     const result = await client.models.generateContent({
       model: "gemini-2.5-flash",
-      tools: [{ google_search: {} }], // enable web search tool
+      config: {
+            tools: [{ googleSearch: {} }] // 'tools' must be inside 'config'
+        },
       contents: [
         {
           role: "user",
